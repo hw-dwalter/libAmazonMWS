@@ -1,0 +1,3 @@
+add_subdirectory(basic)
+add_subdirectory(basic_pugi)
+add_subdirectory(advanced_pugi)
