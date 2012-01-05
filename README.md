@@ -31,6 +31,8 @@ Will produce output similar to this:
         </ResponseMetadata>
     </GetServiceStatusResponse>
 
+Complete sample 1 can be found [here](https://github.com/hw-dwalter/libAmazonMWS/blob/master/samples/basic/main.cpp "basic sample").
+
 ### Sample 2 (Advanced)
 
     stringstream response;
@@ -45,10 +47,12 @@ Will produce output similar to this:
     double httpCode = orderClient.call(Service::Order::ListOrders, request, response);
 
 Response holds now 5 orders which are changed in the last 2 hours on the given marketplaces.
-In the complete samples the response will be processed further with the pugi xml parser.
+In the
+[complete sample](https://github.com/hw-dwalter/libAmazonMWS/blob/master/samples/advanced_pugi/main.cpp "advanced sample with parameters and pugi xml processing")
+the response will be processed further with the pugi xml parser.
 
 Internals
 ---------
 
-Internally these library makes use of boost for timestamp calculation, libcurl for HTTP processing
-and OpenSSL for base64 calculation and HMAC SHA256 encryption.
+Internally these library makes use of **boost** for timestamp calculation, **libcurl** for HTTP processing
+and **OpenSSL** for base64 calculation and HMAC SHA256 encryption.
