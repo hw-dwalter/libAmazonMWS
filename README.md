@@ -50,5 +50,5 @@ In the complete samples the response will be processed further with the pugi xml
 Internals
 ---------
 
-Internally these library makes use of boost for timestamp calculation, libcurl für HTTP processing
+Internally these library makes use of boost for timestamp calculation, libcurl for HTTP processing
 and OpenSSL for base64 calculation and HMAC SHA256 encryption.
