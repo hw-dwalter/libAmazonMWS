@@ -38,6 +38,11 @@ public:
 
 };
 
+static const char* AMAZON_DE = "A1PA6795UKMFR9";
+static const char* AMAZON_CO_UK = "A1F83G8C2ARO7P";
+static const char* AMAZON_IT = "APJ6JRA9NG5V4";
+static const char* AMAZON_FR = "A13V1IB3VIYZZH";
+
 #include "Client.inl"
 
 #endif // AMAZONMWS_CLIENT_H

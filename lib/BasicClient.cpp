@@ -52,8 +52,9 @@ BasicClient::~BasicClient() { }
 long BasicClient::call( const char* service, const char* call, const char* version,
 		paramMap_t& request, ostream& response, long verbose) {
 	string HTTPRequestURI = "/";
-	HTTPRequestURI.append(service);
-	if(HTTPRequestURI != "/") {
+	
+	if(service) {
+	  HTTPRequestURI.append(service);
 	  HTTPRequestURI.append("/").append(version);
 	}
 
@@ -109,7 +110,7 @@ long BasicClient::call( const char* service, const char* call, const char* versi
 	CanonicalizedQueryString.append("&Signature=").append(m_pimpl->signature(StringToSign));
 
 	string endpoint = "https://" + m_pimpl->m_Endpoint + HTTPRequestURI;
-	return m_pimpl->post(endpoint, CanonicalizedQueryString, response);
+	return m_pimpl->post(endpoint, CanonicalizedQueryString, response, verbose);
 }
 
 BasicClient::impl::impl(const string& Endpoint, const string& AWSAccessKeyId, const string& AWSSecretKey, const string& Merchant)
@@ -203,6 +204,9 @@ long BasicClient::impl::post(const string& endpoint, const string& postfields, o
 	curl_easy_setopt(m_curl, CURLOPT_POSTFIELDS, postfields.c_str());
 	curl_easy_setopt(m_curl, CURLOPT_URL, endpoint.c_str());
 	curl_easy_setopt(m_curl, CURLOPT_WRITEDATA, (void*)&response);
+	
+	cout << postfields << endl;
+	cout << endpoint << endl;
 
 	CURLcode res = curl_easy_perform(m_curl);
 	response.flush();
